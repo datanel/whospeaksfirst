@@ -17,6 +17,7 @@ var speakers Speakers = Speakers{
 		"Pascal Rouge",
 		"Patoche",
 		"Pierre-Etienne",
+		"Vincent",
 	},
 	Absent: []string{},
 }

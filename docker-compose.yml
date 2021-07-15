@@ -15,7 +15,6 @@ services:
       restart_policy:
         condition: on-failure
       labels:
-        - "traefik.frontend.rule=Host:${SERVER_HOST};PathPrefixStrip:/whospeaksfirst"
         - "traefik.backend=whospeaksfirst"
         - "traefik.docker.network=lb-common"
         - "traefik.port=8000"
@@ -24,7 +23,7 @@ services:
         ## Bug fix / https://github.com/containous/traefik/issues/563#issuecomment-421360934
         - "traefik.frontend.redirect.regex=^(.*)/whospeaksfirst$$"
         - "traefik.frontend.redirect.replacement=$$1/whospeaksfirst/"
-        - "traefik.frontend.rule=PathPrefix:/whospeaksfirst;ReplacePathRegex: ^/whospeaksfirst/(.*) /$$1"
+        - "traefik.frontend.rule=Host:${SERVER_HOST};PathPrefix:/whospeaksfirst;ReplacePathRegex: ^/whospeaksfirst/(.*) /$$1"
     networks:
       - default
       - lb-common
